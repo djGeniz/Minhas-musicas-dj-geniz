@@ -12,7 +12,6 @@
             padding: 20px;
         }
 
-        /* TELA DE LOGIN */
         .caixa-login {
             background: #151515;
             padding: 40px 30px;
@@ -45,7 +44,6 @@
         }
         button:hover {transform: scale(1.03); box-shadow: 0 0 15px rgba(255, 102, 0, 0.6);}
 
-        /* ÁREA DAS PASTAS */
         #conteudo {display: none; width: 100%; max-width: 1000px; margin: 0 auto;}
         .cabecalho {text-align: center; margin-bottom: 40px; padding-top: 20px;}
         .cabecalho .logo-topo {max-width: 280px; margin-bottom: 10px;}
@@ -78,7 +76,6 @@
         .pasta h3 {color: #ffcc00; font-size: 18px; text-transform: uppercase;}
         .pasta p {color: #ff9900; font-size: 14px; margin-top: 5px;}
 
-        /* LISTA DE MÚSICAS DENTRO DA PASTA */
         .lista-musicas {
             display: none;
             margin-top: 30px;
@@ -111,7 +108,6 @@
 </head>
 <body>
 
-    <!-- TELA DE LOGIN -->
     <div class="caixa-login" id="telaLogin">
         <img src="logo.png" alt="DJ GENIZ - O Chegado da Galera" class="logo">
         <img src="foto.png" alt="DJGENIZ5744" class="foto-perfil">
@@ -127,7 +123,6 @@
         <button onclick="entrar()">Entrar</button>
     </div>
 
-    <!-- ÁREA PRINCIPAL -->
     <div id="conteudo">
         <div class="cabecalho">
             <img src="logo.png" alt="DJ GENIZ" class="logo-topo">
@@ -135,9 +130,7 @@
             <p>Escolha a categoria</p>
         </div>
 
-        <!-- TELA DAS PASTAS -->
         <div class="grade-pastas" id="telaPastas">
-            <!-- 📂 ADICIONE MAIS PASTAS COPIANDO E COLOCANDO AQUI -->
             <div class="pasta" onclick="abrirPasta('arrocha')">
                 <div class="icone-pasta">📂</div>
                 <h3>Arrocha</h3>
@@ -163,7 +156,6 @@
             </div>
         </div>
 
-        <!-- TELA DE MÚSICAS -->
         <div class="lista-musicas" id="telasMusicas">
             <button class="btn-voltar" onclick="voltarPastas()">⬅️ Voltar</button>
             <h2 id="nomePasta"></h2>
@@ -175,26 +167,44 @@
 const usuarioCorreto = "DJGENIZ5744";
 const senhaCorreta = "5744DJ@";
 
-// 🎵 AQUI VOCÊ COLOCA O NOME DAS MÚSICAS DE CADA PASTA
 const musicas = {
-    arrocha: [
-        "Música 1 - Arrocha",
-        "Música 2 - Arrocha",
-        "Música 3 - Arrocha"
-    ],
-    forro: [
-        "Música 1 - Forró",
-        "Música 2 - Forró"
-    ],
-    sertanejo: [
-        "Música 1 - Sertanejo",
-        "Música 2 - Sertanejo"
-    ],
-    brega: [
-        "Música 1 - Brega Funk",
-        "Música 2 - Brega Funk"
-    ]
+    arrocha: ["Música 1 - Arrocha", "Música 2 - Arrocha", "Música 3 - Arrocha"],
+    forro: ["Música 1 - Forró", "Música 2 - Forró"],
+    sertanejo: ["Música 1 - Sertanejo", "Música 2 - Sertanejo"],
+    brega: ["Música 1 - Brega Funk", "Música 2 - Brega Funk"]
 };
 
 function entrar() {
-    let user = 
+    let user = document.getElementById("usuario").value;
+    let pass = document.getElementById("senha").value;
+    if(user === usuarioCorreto && pass === senhaCorreta) {
+        document.getElementById("telaLogin").style.display = "none";
+        document.getElementById("conteudo").style.display = "block";
+    } else {
+        alert("❌ Usuário ou senha incorretos!");
+    }
+}
+
+function abrirPasta(nome) {
+    document.getElementById("telaPastas").style.display = "none";
+    document.getElementById("telasMusicas").style.display = "block";
+    document.getElementById("nomePasta").innerText = 📂 ${nome.toUpperCase()};
+    
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+    musicas[nome].forEach(m => {
+        let item = document.createElement("div");
+        item.className = "musica";
+        item.innerText = 🎵 ${m};
+        lista.appendChild(item);
+    });
+}
+
+function voltarPastas() {
+    document.getElementById("telasMusicas").style.display = "none";
+    document.getElementById("telaPastas").style.display = "grid";
+}
+</script>
+
+</body>
+</html>
