@@ -107,6 +107,7 @@
             color: #ffcc00;
             text-align: center;
             padding: 40px 20px;
+            width: 100%;
         }
 
         #conteudo h1 {
@@ -141,10 +142,10 @@
         <button onclick="entrar()">Entrar</button>
     </div>
 
+    <!-- AQUI VOCÊ COLOCA TODO O SEU SITE, MÚSICAS, LINKS, TUDO O QUE QUISER -->
     <div id="conteudo">
-        <h1>🎧 Bem-vindo, DJGENIZ5744!</h1>
-        <p>Você está conectado com sucesso ao sistema.</p>
-        <button onclick="sair()" style="width: auto; padding: 10px 25px;">Sair</button>
+        <h1>🎧 Bem-vindo ao espaço do DJ GENIZ!</h1>
+        <p>Aqui você coloca suas músicas, links, agenda e tudo o que quiser compartilhar.</p>
     </div>
 
 <script>
@@ -161,13 +162,6 @@ function entrar() {
     } else {
         alert("❌ Usuário ou senha incorretos! Tente novamente.");
     }
-}
-
-function sair() {
-    document.getElementById("telaLogin").style.display = "block";
-    document.getElementById("conteudo").style.display = "none";
-    document.getElementById("usuario").value = "";
-    document.getElementById("senha").value = "";
 }
 </script>
 
