@@ -2,168 +2,199 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Acesso DJGENIZ5744</title>
+    <title>DJ GENIZ - O Chegado da Galera</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
+        * {margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;}
+        
         body {
-            background: #111;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 20px;
         }
 
+        /* TELA DE LOGIN */
         .caixa-login {
-            background: #1a1a1a;
-            padding: 35px 25px;
+            background: #151515;
+            padding: 40px 30px;
             border-radius: 15px;
             width: 100%;
             max-width: 460px;
-            box-shadow: 0 0 35px rgba(255, 120, 0, 0.5);
+            margin: 0 auto;
             text-align: center;
             border: 2px solid #ff9900;
+            box-shadow: 0 0 40px rgba(255, 102, 0, 0.4);
         }
 
-        .logo {
-            max-width: 350px;
-            margin-bottom: 10px;
-        }
-
+        .logo {max-width: 320px; margin-bottom: 10px;}
         .foto-perfil {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #ffcc00;
-            margin-bottom: 20px;
+            width: 140px; height: 140px; border-radius: 50%;
+            object-fit: cover; border: 4px solid #ffcc00; margin-bottom: 20px;
         }
-
-        .caixa-login h2 {
-            color: #ffcc00;
-            margin-bottom: 25px;
-            font-size: 24px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .campo {
-            margin-bottom: 22px;
-            text-align: left;
-        }
-
-        .campo label {
-            display: block;
-            margin-bottom: 6px;
-            color: #ffcc00;
-            font-weight: bold;
-            font-size: 15px;
-        }
-
+        .caixa-login h2 {color: #ffcc00; margin-bottom: 25px; font-size: 24px; text-transform: uppercase;}
+        .campo {margin-bottom: 22px; text-align: left;}
+        .campo label {display: block; margin-bottom: 6px; color: #ffcc00; font-weight: bold;}
         .campo input {
-            width: 100%;
-            padding: 13px;
-            border: 1px solid #ff6600;
-            border-radius: 8px;
-            font-size: 16px;
-            background: #2b2b2b;
-            color: white;
-            outline: none;
+            width: 100%; padding: 13px; border: 1px solid #ff6600;
+            border-radius: 8px; font-size: 16px; background: #252525; color: white; outline: none;
         }
-
-        .campo input:focus {
-            border-color: #ffcc00;
-            box-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
-        }
-
         button {
-            width: 100%;
-            padding: 14px;
+            width: 100%; padding: 14px;
             background: linear-gradient(90deg, #ff4400, #ffcc00);
-            color: #000;
-            border: none;
-            border-radius: 8px;
-            font-size: 19px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
+            color: #000; border: none; border-radius: 8px;
+            font-size: 19px; font-weight: bold; cursor: pointer; transition: 0.2s;
+        }
+        button:hover {transform: scale(1.03); box-shadow: 0 0 15px rgba(255, 102, 0, 0.6);}
+
+        /* ÁREA DAS PASTAS */
+        #conteudo {display: none; width: 100%; max-width: 1000px; margin: 0 auto;}
+        .cabecalho {text-align: center; margin-bottom: 40px; padding-top: 20px;}
+        .cabecalho .logo-topo {max-width: 280px; margin-bottom: 10px;}
+        .cabecalho h1 {color: #ffcc00; font-size: 32px; text-transform: uppercase;}
+        .cabecalho p {color: #ff9900; font-size: 18px;}
+
+        .grade-pastas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            padding: 10px;
         }
 
-        button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 15px rgba(255, 102, 0, 0.6);
-        }
-
-        #conteudo {
-            display: none;
-            color: #ffcc00;
+        .pasta {
+            background: #1a1a1a;
+            border: 2px solid #ff6600;
+            border-radius: 12px;
+            padding: 25px 15px;
             text-align: center;
-            padding: 40px 20px;
-            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.2);
         }
+        .pasta:hover {
+            transform: translateY(-8px);
+            border-color: #ffcc00;
+            box-shadow: 0 0 25px rgba(255, 204, 0, 0.5);
+        }
+        .icone-pasta {font-size: 55px; margin-bottom: 10px;}
+        .pasta h3 {color: #ffcc00; font-size: 18px; text-transform: uppercase;}
+        .pasta p {color: #ff9900; font-size: 14px; margin-top: 5px;}
 
-        #conteudo h1 {
-            margin-bottom: 15px;
-            font-size: 28px;
+        /* LISTA DE MÚSICAS DENTRO DA PASTA */
+        .lista-musicas {
+            display: none;
+            margin-top: 30px;
+            background: #151515;
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid #ff9900;
         }
-
-        #conteudo p {
-            font-size: 18px;
-            margin-bottom: 25px;
+        .lista-musicas h2 {color: #ffcc00; margin-bottom: 20px; text-align: center;}
+        .musica {
+            padding: 12px;
+            margin: 8px 0;
+            background: #222;
+            border-radius: 8px;
+            color: white;
+            transition: 0.2s;
         }
+        .musica:hover {background: #333; padding-left: 20px; color: #ffcc00;}
+        .btn-voltar {
+            background: transparent;
+            border: 1px solid #ffcc00;
+            color: #ffcc00;
+            width: auto;
+            padding: 8px 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .btn-voltar:hover {background: #ffcc00; color: black;}
     </style>
 </head>
 <body>
 
+    <!-- TELA DE LOGIN -->
     <div class="caixa-login" id="telaLogin">
         <img src="logo.png" alt="DJ GENIZ - O Chegado da Galera" class="logo">
         <img src="foto.png" alt="DJGENIZ5744" class="foto-perfil">
-
         <h2>Acesso Restrito</h2>
-        
         <div class="campo">
             <label>Usuário</label>
             <input type="text" id="usuario" placeholder="Digite seu usuário">
         </div>
-
         <div class="campo">
             <label>Senha</label>
             <input type="password" id="senha" placeholder="Digite sua senha">
         </div>
-
         <button onclick="entrar()">Entrar</button>
     </div>
 
-    <!-- AQUI VOCÊ COLOCA TODO O SEU SITE, MÚSICAS, LINKS, TUDO O QUE QUISER -->
+    <!-- ÁREA PRINCIPAL -->
     <div id="conteudo">
-        <h1>🎧 Bem-vindo ao espaço do DJ GENIZ!</h1>
-        <p>Aqui você coloca suas músicas, links, agenda e tudo o que quiser compartilhar.</p>
+        <div class="cabecalho">
+            <img src="logo.png" alt="DJ GENIZ" class="logo-topo">
+            <h1>🎧 MINHAS MÚSICAS</h1>
+            <p>Escolha a categoria</p>
+        </div>
+
+        <!-- TELA DAS PASTAS -->
+        <div class="grade-pastas" id="telaPastas">
+            <!-- 📂 ADICIONE MAIS PASTAS COPIANDO E COLOCANDO AQUI -->
+            <div class="pasta" onclick="abrirPasta('arrocha')">
+                <div class="icone-pasta">📂</div>
+                <h3>Arrocha</h3>
+                <p>Melhores arrochas</p>
+            </div>
+
+            <div class="pasta" onclick="abrirPasta('forro')">
+                <div class="icone-pasta">📂</div>
+                <h3>Forró</h3>
+                <p>Tudo de forró</p>
+            </div>
+
+            <div class="pasta" onclick="abrirPasta('sertanejo')">
+                <div class="icone-pasta">📂</div>
+                <h3>Sertanejo</h3>
+                <p>Moda e universitário</p>
+            </div>
+
+            <div class="pasta" onclick="abrirPasta('brega')">
+                <div class="icone-pasta">📂</div>
+                <h3>Brega Funk</h3>
+                <p>Sucessos atuais</p>
+            </div>
+        </div>
+
+        <!-- TELA DE MÚSICAS -->
+        <div class="lista-musicas" id="telasMusicas">
+            <button class="btn-voltar" onclick="voltarPastas()">⬅️ Voltar</button>
+            <h2 id="nomePasta"></h2>
+            <div id="lista"></div>
+        </div>
     </div>
 
 <script>
 const usuarioCorreto = "DJGENIZ5744";
 const senhaCorreta = "5744DJ@";
 
+// 🎵 AQUI VOCÊ COLOCA O NOME DAS MÚSICAS DE CADA PASTA
+const musicas = {
+    arrocha: [
+        "Música 1 - Arrocha",
+        "Música 2 - Arrocha",
+        "Música 3 - Arrocha"
+    ],
+    forro: [
+        "Música 1 - Forró",
+        "Música 2 - Forró"
+    ],
+    sertanejo: [
+        "Música 1 - Sertanejo",
+        "Música 2 - Sertanejo"
+    ],
+    brega: [
+        "Música 1 - Brega Funk",
+        "Música 2 - Brega Funk"
+    ]
+};
+
 function entrar() {
-    let user = document.getElementById("usuario").value;
-    let pass = document.getElementById("senha").value;
-
-    if(user === usuarioCorreto && pass === senhaCorreta) {
-        document.getElementById("telaLogin").style.display = "none";
-        document.getElementById("conteudo").style.display = "block";
-    } else {
-        alert("❌ Usuário ou senha incorretos! Tente novamente.");
-    }
-}
-</script>
-
-</body>
-</html>
+    let user = 
